@@ -14,24 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $username = "Olga";
-    $students = [
-        [
-            "name" => "Pippo",
-            "lastname" => "Verdi",
-            "age" => 21
-        ],
-        [
-            "name" => "Pluto",
-            "lastname" => "Bruni",
-            "age" => 25
-        ],
-        [
-            "name" => "Paperino",
-            "lastname" => "Neri",
-            "age" => 18
-        ]
-    ];
+    $username = config("db.username");
+    $students = config("db.students");
+
+    // display and die;
+    // dd($students);
 
     // Array associativo per passare i dati
     // $data = [
