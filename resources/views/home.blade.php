@@ -1,20 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
+@section('title')
+  Home
+@endsection
 
-<body>
-  <ul>
-    <li><a href="{{ route('home') }}">Home</a></li>
-    <li><a href="{{ route('about') }}">About</a></li>
-  </ul>
-
+@section('content')
   <h1>Hello {{ $username }} from laravel</h1>
-</body>
+  <section>
+    <h2>Lista di studenti</h2>
+    <ul>
+      {{-- @if (count($students) > 0)
+        @foreach ($students as $student)
+          <li>
+            <h4>{{ $student['name'] }} {{ $student['lastname'] }}</h4>
+            <p>Età: {{ $student['age'] }} anni</p>
+          </li>
+        @endforeach
+      @else
+        <li>Non ci sono ancora studenti in questa lista</li>
+      @endif --}}
 
-</html>
+      @forelse ($students as $student)
+        <li>
+          <h4>{{ $student['name'] }} {{ $student['lastname'] }}</h4>
+          <p>Età: {{ $student['age'] }} anni</p>
+        </li>
+      @empty
+        <li>Non ci sono ancora studenti in questa lista</li>
+      @endforelse
+
+    </ul>
+  </section>
+@endsection

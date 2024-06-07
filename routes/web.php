@@ -15,6 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $username = "Olga";
+    $students = [
+        [
+            "name" => "Pippo",
+            "lastname" => "Verdi",
+            "age" => 21
+        ],
+        [
+            "name" => "Pluto",
+            "lastname" => "Bruni",
+            "age" => 25
+        ],
+        [
+            "name" => "Paperino",
+            "lastname" => "Neri",
+            "age" => 18
+        ]
+    ];
+
     // Array associativo per passare i dati
     // $data = [
     //     'user' => $username
@@ -22,7 +40,7 @@ Route::get('/', function () {
     // return view('home', $data);
 
     // Funzione compact per passare i dati alla view
-    return view('home', compact('username'));
+    return view('home', compact('username', 'students'));
 })->name('home');
 
 Route::get('/about', function () {
